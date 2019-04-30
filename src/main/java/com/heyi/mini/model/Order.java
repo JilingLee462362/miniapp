@@ -4,10 +4,8 @@ package com.heyi.mini.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 用户实体类
@@ -27,20 +25,22 @@ import javax.persistence.Table;
 @Setter
 @Getter
 @Entity
-@Table(name = "AUTH_CART")
-public class Cart {
+@Table(name = "AUTH_ORDER")
+public class Order implements java.io.Serializable{
 
     @Id
-    private Long id;
-    @Id
-    private Long goodsid;
-    @Id
-    private Long userid;
+    @GeneratedValue
+    private Long orderid;
+
+    @Column
+    private Long userinfoid;
+
+
 
     @Column
     private double totalprice;
 
-
-
+    @Column
+    private int state;
 
 }

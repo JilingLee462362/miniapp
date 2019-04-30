@@ -3,10 +3,7 @@ package com.heyi.mini.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 用户实体类
@@ -28,6 +25,7 @@ import javax.persistence.Table;
 @Table(name = "AUTH_USER")
 public class UserDO {
     @Id
+    @GeneratedValue
     private Long id;
     @Column(length = 32)
     private String name;

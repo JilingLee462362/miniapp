@@ -4,10 +4,8 @@ package com.heyi.mini.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 用户实体类
@@ -28,20 +26,28 @@ import javax.persistence.Table;
 @Getter
 @Entity
 @Table(name = "AUTH_USERINFO")
-public class Userinfo {
+public class Userinfo implements java.io.Serializable{
 
     @Id
-    private Long id;
+    @GeneratedValue
+    private Long userinfoid;
+    @Column(length = 64)
+    private String openid;//用户openid
     @Column(length = 32)
-    private String nickName;
+    private String nickName;//用户昵称
     @Column(length = 32)
-    private String avatarUrl;
+    private String avatarUrl;//用户头像
     @Column(length = 32)
-    private String province;
+    private String province;//用户省份
     @Column(length = 32)
-    private String city;
+    private String city;//用户城市
     @Column(length = 32)
-    private String dengji;
+    private String dengji;//用户等级
+
+
+// @OneToMany (mappedBy = "Articles"),mappedBy指向的是要关联的属性，而不是要关联的类
+    @OneToMany(mappedBy = "userinfoid")
+    private List<Order> orderList;
 
 
 
