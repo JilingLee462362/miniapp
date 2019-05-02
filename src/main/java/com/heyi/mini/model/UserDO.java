@@ -24,6 +24,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "AUTH_USER")
 public class UserDO {
+    public UserDO(String name, String account, String pwd) {
+        this.name = name;
+        this.account = account;
+        this.pwd = pwd;
+    }
+
     @Id
     @GeneratedValue
     private Long id;
@@ -34,4 +40,13 @@ public class UserDO {
     @Column(length = 64)
     private String pwd;
 
+    @Override
+    public String toString() {
+        return "UserDO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", account='" + account + '\'' +
+                ", pwd='" + pwd + '\'' +
+                '}';
+    }
 }

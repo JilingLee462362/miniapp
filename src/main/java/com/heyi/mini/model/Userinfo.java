@@ -35,7 +35,7 @@ public class Userinfo implements java.io.Serializable{
     private String openid;//用户openid
     @Column(length = 32)
     private String nickName;//用户昵称
-    @Column(length = 32)
+    @Column
     private String avatarUrl;//用户头像
     @Column(length = 32)
     private String province;//用户省份
@@ -50,6 +50,17 @@ public class Userinfo implements java.io.Serializable{
     private List<Order> orderList;
 
 
-
-
+    @Override
+    public String toString() {
+        return "Userinfo{" +
+                "userinfoid=" + userinfoid +
+                ", openid='" + openid + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", dengji='" + dengji + '\'' +
+                ", orderList=" + orderList +
+                '}';
+    }
 }
