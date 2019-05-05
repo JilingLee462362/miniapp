@@ -45,6 +45,8 @@ public class Userinfo implements java.io.Serializable{
     private String dengji;//用户等级
 
 
+
+
 // @OneToMany (mappedBy = "Articles"),mappedBy指向的是要关联的属性，而不是要关联的类
     @OneToMany(mappedBy = "userinfoid")
     private List<Order> orderList;

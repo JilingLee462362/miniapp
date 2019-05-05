@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/goods")
@@ -28,6 +29,24 @@ public class GoodsController {
         List<Goods> goodsList = dao.findByType(type);
         if (goodsList.size()>0) {
             Object o = JSONObject.toJSON(goodsList);
+            result.put("msg", "ok");
+            result.put("state", 1);
+            result.put("data", o.toString());
+        } else {
+            result.put("msg", "null");
+            result.put("state", 0);
+            result.put("data", null);
+        }
+        return result.toString();
+    }
+    @RequestMapping(value = "findById")
+    public String findById(HttpServletRequest request) {
+        JSONObject result = new JSONObject();
+        String goodsid = request.getParameter("goodsid");
+        Goods goods = dao.findById(Long.valueOf(goodsid)).get();
+
+        if (goods != null) {
+            Object o = JSONObject.toJSON(goods);
             result.put("msg", "ok");
             result.put("state", 1);
             result.put("data", o.toString());

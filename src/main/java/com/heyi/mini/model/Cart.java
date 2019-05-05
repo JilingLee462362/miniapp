@@ -26,28 +26,23 @@ import javax.persistence.*;
 @Getter
 @Entity
 @ToString
-@Table(name = "AUTH_GOODS")
-public class Goods implements java.io.Serializable {
+@Table(name = "AUTH_CART")
+public class Cart implements java.io.Serializable {
 
     @Id
     @GeneratedValue
-    private Long goodsid;
-    @Column(length = 32)
-    private String name;
+    private Long cartid;
+
+
     @Column
-    private String imgName;
-    @Column(length = 32)
-    private String specs;
+    private String details;
+
+
     @Column
-    private String description;
-    @Column
-    private double price;
-    @Column
-    private Integer salesNum;
-    @Column
-    private Integer pingjia;
-    @Column(length = 32)
-    private String type;
+    private Long userinfoid;
+
+    @ManyToOne
+    private Userinfo userinfo;
 
 
 
