@@ -1,8 +1,8 @@
 package com.heyi.mini.dao;
 
 import com.heyi.mini.model.Cart;
-import com.heyi.mini.model.Goods;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +17,8 @@ import java.util.List;
 
 @Repository
 public interface CartDao extends JpaRepository<Cart, Long> {
-    @Query(value = "select * from auth_cart where cartid = ?", nativeQuery = true)
+    @Query(value = "select * from auth_cart where userinfoid = ?", nativeQuery = true)
         // nativeQuery = true表示使用sql自己的方言查询，想查什么查什么， 按照字段数据类型返回就行了
-   Cart findByCartid(Long cartid);
+   Cart findByUserinfoid(Long cartid);
+
 }

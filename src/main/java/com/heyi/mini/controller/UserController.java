@@ -41,13 +41,13 @@ private  UserinfoDao dao;
 
             result.put("msg", "ok");
             result.put("state", 1);
-            result.put("data", save.toString());
+            result.put("data", save);
         }else {
             // 将获取的json数据封装一层，然后在给返回
 
             result.put("msg", "ok");
             result.put("state", 1);
-            result.put("data", userinfo.toString());
+            result.put("data",userinfo);
         }
 
 

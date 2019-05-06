@@ -54,7 +54,7 @@ public class Userinfo implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "Userinfo{" +
+        return "{" +
                 "userinfoid=" + userinfoid +
                 ", openid='" + openid + '\'' +
                 ", nickName='" + nickName + '\'' +
@@ -63,6 +63,6 @@ public class Userinfo implements java.io.Serializable{
                 ", city='" + city + '\'' +
                 ", dengji='" + dengji + '\'' +
                 ", orderList=" + orderList +
-                '}';
+                "}";
     }
 }

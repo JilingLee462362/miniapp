@@ -41,9 +41,39 @@ public class Cart implements java.io.Serializable {
     @Column
     private Long userinfoid;
 
-    @ManyToOne
+
     private Userinfo userinfo;
 
 
+    public Long getCartid() {
+        return cartid;
+    }
 
+    public void setCartid(Long cartid) {
+        this.cartid = cartid;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public Long getUserinfoid() {
+        return userinfoid;
+    }
+
+    public void setUserinfoid(Long userinfoid) {
+        this.userinfoid = userinfoid;
+    }
+
+    public Userinfo getUserinfo() {
+        return userinfo;
+    }
+
+    public void setUserinfo(Userinfo userinfo) {
+        this.userinfo = userinfo;
+    }
 }
