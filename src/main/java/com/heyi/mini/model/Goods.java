@@ -32,7 +32,7 @@ public class Goods implements java.io.Serializable {
     private Long goodsid;
     @Column(length = 32)
     private String name;
-    @Column(length = 32)
+    @Column
     private String imgName;
     @Column(length = 32)
     private String specs;
