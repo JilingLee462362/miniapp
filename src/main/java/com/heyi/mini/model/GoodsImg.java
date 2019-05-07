@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * 用户实体类
@@ -27,33 +26,22 @@ import java.util.List;
 @Getter
 @Entity
 @ToString
-@Table(name = "AUTH_GOODS")
-public class Goods implements java.io.Serializable {
+@Table(name = "AUTH_GOODSIMG")
+public class GoodsImg implements java.io.Serializable {
 
     @Id
     @GeneratedValue
+    private Long imgid;
+
+
+    @Column
     private Long goodsid;
-    @Column(length = 32)
-    private String name;
-    @Column
-    private String imgName;
-    @Column(length = 32)
-    private String specs;
-    @Column
-    private String description;
-    @Column
-    private double price;
-    @Column
-    private Integer salesNum;
-    @Column
-    private Integer pingjia;
-    @Column(length = 32)
-    private String type;
 
-    private int num;
+    @Column
+    private String imgurl;
 
 
-    @OneToMany(mappedBy = "goodsid",fetch = FetchType.EAGER)
-    private List<GoodsImg> goodsImgList;
+
+
 
 }

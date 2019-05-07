@@ -1,4 +1,4 @@
-package com.heyi.mini.dao;
+package com.heyi.mini.model;
 
 
 import com.heyi.mini.model.Goods;

@@ -50,7 +50,8 @@ public class Userinfo implements java.io.Serializable{
 // @OneToMany (mappedBy = "Articles"),mappedBy指向的是要关联的属性，而不是要关联的类
     @OneToMany(mappedBy = "userinfoid")
     private List<Order> orderList;
-
+    @OneToMany(mappedBy = "userinfoid")
+    private List<Useraddress> useraddressList;
 
     @Override
     public String toString() {

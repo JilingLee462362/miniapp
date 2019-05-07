@@ -1,10 +1,9 @@
 package com.heyi.mini.controller;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.heyi.mini.dao.CartDao;
 import com.heyi.mini.dao.GoodsDao;
-import com.heyi.mini.dao.GoodsNum;
+import com.heyi.mini.model.GoodsNum;
 import com.heyi.mini.model.Cart;
 import com.heyi.mini.model.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
