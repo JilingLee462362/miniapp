@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -55,17 +56,19 @@ public class CartController {
         String userid = request.getParameter("userid");
         Cart byUserinfoid = cartDao.findByUserinfoid(Long.valueOf(userid));
         if (byUserinfoid != null) {
-
             String details = byUserinfoid.getDetails();
-        List<GoodsNum> goodsNums = JSONObject.parseArray(details, GoodsNum.class);
-        for (GoodsNum g: goodsNums
-             ) {
-            Goods goods = goodsDao.findById(g.getId()).get();
-            g.setGoods(goods);
-        }
+            List<GoodsNum> goodsNums = JSONObject.parseArray(details, GoodsNum.class);
+            List<Goods> goodsList = new LinkedList<>();
+            for (GoodsNum g: goodsNums
+                 ) {
+                Goods goods = goodsDao.findById(g.getId()).get();
+                goods.setNum(g.getNum());
+                goodsList.add(goods);
+            }
+            Object o = JSONObject.toJSON(goodsList);
             result.put("msg", "ok");
-            result.put("state", 1);
-            result.put("data", goodsNums);
+                result.put("state", 1);
+                result.put("data", o.toString());
         }else {
 
             result.put("msg", "ok");

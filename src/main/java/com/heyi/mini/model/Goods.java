@@ -49,6 +49,6 @@ public class Goods implements java.io.Serializable {
     @Column(length = 32)
     private String type;
 
-
+    private int num;
 
 }
