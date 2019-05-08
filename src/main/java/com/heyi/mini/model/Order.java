@@ -1,12 +1,11 @@
 package com.heyi.mini.model;
 
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.sql.Timestamp;
 
 /**
  * 用户实体类
@@ -31,7 +30,7 @@ public class Order implements java.io.Serializable{
 
     @Id
     @GeneratedValue
-    private String orderid;
+    private Long orderid;
 
     @Column
     private String detail;
@@ -43,14 +42,14 @@ public class Order implements java.io.Serializable{
     private String address;
 
     @Column
-    private Data creatdata;
+    private Timestamp creatdata;
 
     @Column
-    private Data paydata;
+    private Timestamp paydata;
 
 
     @Column
-    private double totalprice;
+    private Double totalprice;
 
     @Column
     private int state;
