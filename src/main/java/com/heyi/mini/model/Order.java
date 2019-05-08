@@ -1,6 +1,7 @@
 package com.heyi.mini.model;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,11 +31,22 @@ public class Order implements java.io.Serializable{
 
     @Id
     @GeneratedValue
-    private Long orderid;
+    private String orderid;
+
+    @Column
+    private String detail;
 
     @Column
     private Long userinfoid;
 
+    @Column
+    private String address;
+
+    @Column
+    private Data creatdata;
+
+    @Column
+    private Data paydata;
 
 
     @Column

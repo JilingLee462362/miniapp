@@ -47,7 +47,8 @@ private  UserinfoDao dao;
 
             result.put("msg", "ok");
             result.put("state", 1);
-            result.put("data",userinfo);
+
+            result.put("data",byOpenid);
         }
 
 
