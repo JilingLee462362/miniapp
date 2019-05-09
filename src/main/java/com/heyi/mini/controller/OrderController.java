@@ -40,6 +40,42 @@ public class OrderController {
         }
         return result.toString();
     }
+    @RequestMapping(value = "findByOrderid")
+    public String findByOrderid(HttpServletRequest request) {
+        JSONObject result = new JSONObject();
+        String orderid = request.getParameter("orderid");
+        Order order = orderDao.findById(Long.valueOf(orderid)).get();
+
+        if (order!=null) {
+            result.put("msg", "ok");
+            result.put("state", 1);
+            result.put("data", order);
+        } else {
+            result.put("msg", "没有您要查询的");
+            result.put("state", 0);
+            result.put("data", null);
+        }
+        return result.toString();
+    }
+    @RequestMapping(value = "findByUserinfoidandState")
+    public String findByIdandState(HttpServletRequest request) {
+        JSONObject result = new JSONObject();
+        String userinfoid = request.getParameter("userinfoid");
+        String state = request.getParameter("state");
+        List<Order> byUserinfoid = orderDao.findByUserinfoidandState(Long.valueOf(userinfoid),Integer.valueOf(state));
+
+        if (byUserinfoid.size()>0) {
+            Object o = JSONObject.toJSON(byUserinfoid);
+            result.put("msg", "ok");
+            result.put("state", 1);
+            result.put("data", o.toString());
+        } else {
+            result.put("msg", "没有您要查询的");
+            result.put("state", 0);
+            result.put("data", null);
+        }
+        return result.toJSONString();
+    }
 
     @RequestMapping("insertOrder")
     public String insertCart(@RequestBody JSONObject jsonParam){
