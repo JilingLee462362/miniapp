@@ -3,6 +3,7 @@ package com.heyi.mini.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -25,6 +26,7 @@ import java.sql.Timestamp;
 @Setter
 @Getter
 @Entity
+@ToString
 @Table(name = "AUTH_ORDER")
 public class Order implements java.io.Serializable{
 

@@ -45,17 +45,18 @@ public class OrderController {
         JSONObject result = new JSONObject();
         String orderid = request.getParameter("orderid");
         Order order = orderDao.findById(Long.valueOf(orderid)).get();
+        Object o = JSONObject.toJSON(order);
 
         if (order!=null) {
             result.put("msg", "ok");
             result.put("state", 1);
-            result.put("data", order);
+            result.put("data", o.toString());
         } else {
             result.put("msg", "没有您要查询的");
             result.put("state", 0);
             result.put("data", null);
         }
-        return result.toString();
+        return result.toJSONString();
     }
     @RequestMapping(value = "findByUserinfoidandState")
     public String findByIdandState(HttpServletRequest request) {
@@ -84,6 +85,7 @@ public class OrderController {
         System.out.println(order1);
 
         Order order = JSONObject.parseObject(order1, Order.class);
+        order.setState(1);
         order.setCreatdata(new Timestamp(System.currentTimeMillis()));
         order.setOrderid(Long.valueOf(Tools.getOrderIdByTime()));
 
