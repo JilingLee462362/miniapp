@@ -4,6 +4,7 @@ package com.heyi.mini.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -29,9 +30,9 @@ import java.sql.Timestamp;
 @ToString
 @Table(name = "AUTH_ORDER")
 public class Order implements java.io.Serializable{
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "orderid")
+    @GenericGenerator(name = "orderid", strategy = "com.heyi.mini.me.IDCreatGenerator")
     private Long orderid;
 
     @Column

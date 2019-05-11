@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.Random;
 
 public class Tools {
-    public static String getOrderIdByTime() {
+    public static Long getOrderIdByTime() {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
         String newDate=sdf.format(new Date());
         String result="";
         Random random=new Random();
-        for(int i=0;i<3;i++){
+        for(int i=0;i<2;i++){
             result+=random.nextInt(10);
         }
-        return newDate+result;
+        return Long.valueOf(newDate+result);
     }
 }
