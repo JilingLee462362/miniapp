@@ -38,17 +38,17 @@ private  UserinfoDao dao;
         if (byOpenid == null) {
             Userinfo save = dao.save(userinfo);
             // 将获取的json数据封装一层，然后在给返回
-
+            Object o = JSONObject.toJSON(save.toString());
             result.put("msg", "ok");
             result.put("state", 1);
-            result.put("data", save);
+            result.put("data", o);
         }else {
             // 将获取的json数据封装一层，然后在给返回
-
+            Object o = JSONObject.toJSON(byOpenid);
             result.put("msg", "ok");
             result.put("state", 1);
 
-            result.put("data",byOpenid);
+            result.put("data",o.toString());
         }
 
 
