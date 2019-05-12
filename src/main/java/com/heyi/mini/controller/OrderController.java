@@ -107,4 +107,53 @@ public class OrderController {
         return result.toJSONString();
     }
 
+    @RequestMapping(value = "changeOrderState")
+    public String changeOrderState(HttpServletRequest request) {
+        //'付款','物流','售后','评价','取消'
+        JSONObject result = new JSONObject();
+        String orderid = request.getParameter("orderid");
+        String state = request.getParameter("state");
+        switch (state){
+            case "付款":
+                System.out.println("付款");
+                break;
+            case "物流":
+                System.out.println("物流");
+                break;
+            case "售后":
+                System.out.println("售后");
+                break;
+            case "评价":
+                System.out.println("评价");
+                break;
+            case "取消":
+                System.out.println("取消");
+                break;
+
+
+                default:
+                    break;
+
+        }
+
+
+
+        Order order = orderDao.findById(Long.valueOf(orderid)).get();
+        order.setState(Integer.valueOf(state));
+        Order save = orderDao.save(order);
+
+        if (save!=null) {
+            Object o = JSONObject.toJSON(save);
+            result.put("msg", "ok");
+            result.put("state", 1);
+            result.put("data", o.toString());
+        } else {
+            result.put("msg", "修改失败");
+            result.put("state", 0);
+            result.put("data", null);
+        }
+        return result.toJSONString();
+    }
+
+
 }
